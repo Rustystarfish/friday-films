@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Friday Films</title>
-<meta name="description" content="A weekly Friday report of notable new theatrical, streaming, and VOD movie releases in the U.S." />
+<meta name="description" content="A weekly Friday report of brand-new subscription streaming and digital VOD film releases in the U.S." />
 <style>
 :root{--bg:#090707;--panel:#151010;--panel2:#211616;--red:#9f1d24;--red2:#d23a3f;--gold:#e6b95c;--cream:#f5ead4;--muted:#b9aaa1}
 *{box-sizing:border-box}
@@ -34,7 +34,7 @@ button:hover,a.btn:hover{border-color:var(--gold);transform:translateY(-1px)} bu
 <div class="tag">Now Showing • Friday Release Report</div>
 <h1>Friday Films</h1>
 <p class="sub">New and current movies worth knowing about, spoiler free.</p>
-<div class="reportline">Report for Friday, October 2, 2026 • U.S. releases</div>
+<div class="reportline">Report for Friday, October 30, 2026 • U.S. releases</div>
 </header>
 
 <div class="toolbar">
@@ -42,56 +42,54 @@ button:hover,a.btn:hover{border-color:var(--gold);transform:translateY(-1px)} bu
     <button class="gold" onclick="openQB()">Open qBittorrent Web UI</button>
     <button onclick="copyAll()">Copy all title searches</button>
   </div>
-  <div class="tag">Updated October 3, 2026</div>
+  <div class="tag">Updated October 30, 2026</div>
 </div>
 
 <div class="summary">
   <div class="stat"><b id="allCount">0</b><span>Total picks</span></div>
-  <div class="stat"><b id="homeCount">0</b><span>New at home</span></div>
-  <div class="stat"><b id="theaterCount">0</b><span>In theaters</span></div>
+  <div class="stat"><b id="homeCount">0</b><span>Subscription streaming</span></div>
+  <div class="stat"><b id="theaterCount">0</b><span>Digital rent / buy</span></div>
 </div>
 
 <div class="filters">
   <button class="active" data-filter="all" onclick="setFilter('all',this)">All</button>
-  <button data-filter="home" onclick="setFilter('home',this)">New at Home</button>
-  <button data-filter="theaters" onclick="setFilter('theaters',this)">In Theaters</button>
+  <button data-filter="home" onclick="setFilter('home',this)">Subscription Streaming</button>
+  <button data-filter="digital" onclick="setFilter('digital',this)">Digital Rent / Buy</button>
 </div>
 
-<h3 class="sectionTitle" id="sectionTitle">This week's new movies</h3>
+<h3 class="sectionTitle" id="sectionTitle">New movies to watch at home this week</h3>
 <main class="grid" id="grid"></main>
 
 <div class="notice">
-The report focuses on new and current releases, not old catalog additions. Copy buttons copy a clean title plus year search string. “Watch / Search” opens JustWatch for legal availability. The qBittorrent shortcut only opens your local Web UI and does not search for or download anything.
+The report focuses on new-to-home releases for October 27–30, not older catalog additions. All platforms are U.S. listings; rental or purchase may cost extra. Listings can change. Copy buttons copy a clean title plus year search string. “Watch / Search” opens JustWatch for legal availability. The qBittorrent shortcut only opens your local Web UI and does not search for or download anything.
 </div>
 
-<div class="sources">
-Release checks:
-<a href="https://cinemaunited.org/release-calendar/" target="_blank" rel="noopener">Cinema United</a> •
-<a href="https://www.boxofficemojo.com/calendar/2026-10-02/" target="_blank" rel="noopener">Box Office Mojo</a> •
-<a href="https://www.netflix.com/tudum/articles/what-to-watch-on-netflix-october-2-2026" target="_blank" rel="noopener">Netflix Tudum</a> •
-<a href="https://www.cinemablend.com/streaming-news/new-recent-movies-streaming-vod" target="_blank" rel="noopener">CinemaBlend</a> •
-<a href="https://www.vulture.com/article/what-to-watch-this-weekend-best-new-movies-and-tv-october-2-4.html" target="_blank" rel="noopener">Vulture</a>
+<div class="sources">Release checks:
+<a href="https://whentostream.com/whats-streaming-this-week-10-25-11-1/" target="_blank" rel="noopener">When to Stream (Oct. 25–Nov. 1)</a> •
+<a href="https://www.themoviebox.net/p/whats-coming-out-this-week-oct26-nov1-2026" target="_blank" rel="noopener">TheMovieBox (Oct. 26–Nov. 1)</a> •
+<a href="https://www.directv.com/insider/top-movies-now/" target="_blank" rel="noopener">DIRECTV Insider</a>
 </div>
 </div>
 <div class="toast" id="toast">Copied</div>
 
 <script>
 const movies = [
-  {title:"Digger",year:2026,group:"theaters",type:"Wide Theatrical",genre:"Dark comedy / drama",date:"Oct. 2",desc:"Tom Cruise stars as a powerful oil tycoon forced to confront the damage tied to his own empire in Alejandro G. Iñárritu's dark comedy."},
-  {title:"Verity",year:2026,group:"theaters",type:"Wide Theatrical",genre:"Psychological thriller",date:"Oct. 2",desc:"A struggling writer accepts a ghostwriting job for a famous author and uncovers disturbing material that changes how she sees the family around her."},
-  {title:"Beware Boiúna",year:2026,group:"theaters",type:"Theatrical",genre:"Action / horror / thriller",date:"Oct. 2",desc:"A tense genre release built around danger, pursuit, and a mythic threat, led by Logan Marshall-Green, Jessica Rothe, and Kiana Madeira."},
-  {title:"Nickels",year:2026,group:"theaters",type:"Limited Theatrical + VOD",genre:"Drama / thriller",date:"Oct. 2",desc:"A new drama thriller arriving in select theaters while also becoming available to watch at home."},
-  {title:"The Last First: Winter K2",year:2026,group:"theaters",type:"Limited Theatrical",genre:"Adventure / documentary",date:"Oct. 2",desc:"A high altitude expedition story centered on the danger, ambition, and human limits involved in a winter attempt on K2."},
-  {title:"Evil Dead Burn",year:2026,group:"home",type:"HBO Max",genre:"Horror",date:"Oct. 2",desc:"A grieving woman visits her late husband's family, where a reunion becomes a fight for survival when a familiar supernatural evil takes hold."},
-  {title:"Teenage Sex and Death at Camp Miasma",year:2026,group:"home",type:"MUBI / VOD",genre:"Horror / romance",date:"Oct. 2",desc:"A queer filmmaker is brought in to revive a cult slasher franchise and becomes entangled with the original film's reclusive final girl."},
-  {title:"Doing Life",year:2026,group:"home",type:"Netflix",genre:"Drama",date:"Oct. 2",desc:"A single mother and an incarcerated man form an unexpected bond through letters, opening a path toward hope, redemption, and connection."},
-  {title:"Schumacher '94: The Birth of a Legend",year:2026,group:"home",type:"Netflix",genre:"Sports documentary",date:"Oct. 2",desc:"Personal interviews and archival footage revisit Michael Schumacher's breakthrough 1994 Formula 1 championship season."},
-  {title:"#Love",year:2026,group:"home",type:"Netflix",genre:"Romantic comedy",date:"Oct. 2",desc:"A practical dating app founder and an adventurous rival put their opposing theories about love to the test in a 60 day challenge."},
-  {title:"Coyote vs. Acme",year:2026,group:"home",type:"VOD Rent / Buy",genre:"Comedy",date:"This week",desc:"Wile E. Coyote hires a lawyer to take Acme to court over years of defective products in a live action and animation hybrid comedy."},
-  {title:"The Uprising",year:2026,group:"home",type:"VOD Rent / Buy",genre:"Historical drama",date:"This week",desc:"A medieval English laborer is pulled into the Peasants' Revolt of 1381 in a historical drama directed by Paul Greengrass."},
-  {title:"Union County",year:2026,group:"home",type:"VOD Rent / Buy",genre:"Drama",date:"This week",desc:"Two brothers struggling with addiction enter rehab and face the difficult work of recovery, family, and rebuilding their lives."},
-  {title:"Soulm8te",year:2026,group:"home",type:"Hulu",genre:"Sci-fi thriller",date:"This week",desc:"A grieving man turns to an AI companion for connection, only for the relationship to become increasingly dangerous as the system grows attached."},
-  {title:"Demon Slayer: Infinity Castle",year:2026,group:"home",type:"Hulu",genre:"Anime / action",date:"Sept. 28",desc:"The Demon Slayer Corps enters the Infinity Castle for a major confrontation in the feature length continuation of the anime saga."}
+  {title:"Big Baby",year:2026,group:"home",type:"Shudder • subscription",genre:"Horror / slasher",date:"Oct. 30",desc:"A horror screenwriter is plagued by nightmares of a masked killer whose terrifying story may be escaping into reality."},
+  {title:"The Gentleman Thief",year:2026,group:"home",type:"Hulu • subscription",genre:"Action / heist thriller",date:"Oct. 30",desc:"A retired thief is drawn into stealing a priceless painting as an old enemy closes in on him."},
+  {title:"Collision Course",year:2026,group:"home",type:"Netflix • subscription",genre:"Crime / thriller",date:"Oct. 30",desc:"After a robbery, the police officers responsible find themselves working on the investigation into their own crime."},
+  {title:"Minions & Monsters",year:2026,group:"home",type:"Peacock • subscription",genre:"Animated comedy / family",date:"Oct. 28",desc:"The Minions try to make it big in 1920s Hollywood, but their monster-movie ambitions cause some very real chaos."},
+  {title:"Ali G: Who Iz I?",year:2026,group:"home",type:"Prime Video • subscription",genre:"Comedy",date:"Oct. 28",desc:"Facing fatherhood, Ali G travels to America in a bid to reclaim his fame, stumbling into fresh trouble along the way."},
+  {title:"Drive: The Pretenders",year:2026,group:"home",type:"Prime Video • subscription",genre:"Romance / sports drama",date:"Oct. 28",desc:"A gifted aspiring racing mechanic agrees to play the fiancée of a star driver in exchange for a career opportunity."},
+  {title:"Hanging by a Wire",year:2026,group:"home",type:"Paramount+ • subscription",genre:"Documentary / survival",date:"Oct. 28",desc:"A documentary reconstructs the rescue of schoolchildren stranded high above a mountain gorge after cable car lines snapped."},
+  {title:"The Dog Stars",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Post-apocalyptic thriller",date:"Oct. 27",desc:"A pilot living with his dog in the aftermath of a deadly pandemic follows an unexpected radio transmission into the unknown."},
+  {title:"Verity",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Psychological thriller",date:"Oct. 27",desc:"A ghostwriter accepts a job for a bestselling author and uncovers troubling secrets hidden inside the family's home."},
+  {title:"Forgotten Island",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Animated adventure / fantasy",date:"Oct. 27",desc:"Two friends enter a magical world where the price of escape may be the memories of their friendship."},
+  {title:"The Stunt Driver",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Biographical comedy / drama",date:"Oct. 27",desc:"A Canadian daredevil attempts to jump a rocket-powered car across the St. Lawrence River in the 1970s."},
+  {title:"Ghost in the Cell",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Supernatural horror",date:"Oct. 27",desc:"Rival prisoners discover that an invisible supernatural threat is hunting the inmates inside their high-security prison."},
+  {title:"Never After Dark",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Supernatural horror / mystery",date:"Oct. 27",desc:"A medium who helps wandering spirits encounters a fearsome apparition and an unexpectedly human threat."},
+  {title:"Filipiñana",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Dark comedy / drama",date:"Oct. 27",desc:"A teenage worker at an exclusive country club in the Philippines uncovers disturbing truths behind its polished exterior."},
+  {title:"Concessions",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Independent comedy / drama",date:"Oct. 27",desc:"Workers and customers at a neighborhood movie theater experience the final evening before its doors close."},
+  {title:"The Lost Ones",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Thriller / horror",date:"Oct. 27",desc:"A family's retreat into the countryside takes a troubling turn after they meet an unsettling neighbor."}
 ];
 
 let currentFilter = "all";
@@ -116,7 +114,7 @@ function render(){
    </div>
   </div>
  </article>`).join("");
- document.getElementById("sectionTitle").textContent=currentFilter==="home"?"New at home":currentFilter==="theaters"?"In theaters":"This week's new movies";
+ document.getElementById("sectionTitle").textContent=currentFilter==="home"?"New on subscription streaming":currentFilter==="digital"?"New to rent / buy digitally":"New at-home movies this week";
 }
 
 function setFilter(filter,el){
@@ -139,7 +137,7 @@ function openQB(){window.open("http://localhost:8080","_blank","noopener")}
 
 document.getElementById("allCount").textContent=movies.length;
 document.getElementById("homeCount").textContent=movies.filter(m=>m.group==="home").length;
-document.getElementById("theaterCount").textContent=movies.filter(m=>m.group==="theaters").length;
+document.getElementById("theaterCount").textContent=movies.filter(m=>m.group==="digital").length;
 render();
 </script>
 </body>
