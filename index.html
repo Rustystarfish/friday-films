@@ -34,7 +34,7 @@ button:hover,a.btn:hover{border-color:var(--gold);transform:translateY(-1px)} bu
 <div class="tag">Now Showing • Friday Release Report</div>
 <h1>Friday Films</h1>
 <p class="sub">New and current movies worth knowing about, spoiler free.</p>
-<div class="reportline">Report for Friday, October 30, 2026 • U.S. releases</div>
+<div class="reportline">Report for Friday, November 6, 2026 • U.S. releases</div>
 </header>
 
 <div class="toolbar">
@@ -42,7 +42,7 @@ button:hover,a.btn:hover{border-color:var(--gold);transform:translateY(-1px)} bu
     <button class="gold" onclick="openQB()">Open qBittorrent Web UI</button>
     <button onclick="copyAll()">Copy all title searches</button>
   </div>
-  <div class="tag">Updated October 30, 2026</div>
+  <div class="tag">Updated November 6, 2026</div>
 </div>
 
 <div class="summary">
@@ -61,35 +61,163 @@ button:hover,a.btn:hover{border-color:var(--gold);transform:translateY(-1px)} bu
 <main class="grid" id="grid"></main>
 
 <div class="notice">
-The report focuses on new-to-home releases for October 27–30, not older catalog additions. All platforms are U.S. listings; rental or purchase may cost extra. Listings can change. Copy buttons copy a clean title plus year search string. “Watch / Search” opens JustWatch for legal availability. The qBittorrent shortcut only opens your local Web UI and does not search for or download anything.
+The report focuses on new-to-home releases for November 3–6, not older catalog additions. All platforms are U.S. listings; rental or purchase may cost extra. Listings can change. Copy buttons copy a clean title plus year search string. “Watch / Search” opens JustWatch for legal availability. The qBittorrent shortcut only opens your local Web UI and does not search for or download anything.
 </div>
 
 <div class="sources">Release checks:
-<a href="https://whentostream.com/whats-streaming-this-week-10-25-11-1/" target="_blank" rel="noopener">When to Stream (Oct. 25–Nov. 1)</a> •
-<a href="https://www.themoviebox.net/p/whats-coming-out-this-week-oct26-nov1-2026" target="_blank" rel="noopener">TheMovieBox (Oct. 26–Nov. 1)</a> •
-<a href="https://www.directv.com/insider/top-movies-now/" target="_blank" rel="noopener">DIRECTV Insider</a>
+<a href="https://www.tomsguide.com/entertainment/streaming/missed-it-in-theaters-heres-every-movie-finally-arriving-on-streaming-in-november-2026" target="_blank" rel="noopener">Tom's Guide November releases</a> •
+<a href="https://www.directv.com/insider/top-movies-now/" target="_blank" rel="noopener">DIRECTV Insider</a> •
+<a href="https://decider.com/2026/11/06/new-movies-on-streaming-resident-evil-primetime-musk-and-more/" target="_blank" rel="noopener">Decider Nov. 6</a>
 </div>
 </div>
 <div class="toast" id="toast">Copied</div>
 
 <script>
 const movies = [
-  {title:"Big Baby",year:2026,group:"home",type:"Shudder • subscription",genre:"Horror / slasher",date:"Oct. 30",desc:"A horror screenwriter is plagued by nightmares of a masked killer whose terrifying story may be escaping into reality."},
-  {title:"The Gentleman Thief",year:2026,group:"home",type:"Hulu • subscription",genre:"Action / heist thriller",date:"Oct. 30",desc:"A retired thief is drawn into stealing a priceless painting as an old enemy closes in on him."},
-  {title:"Collision Course",year:2026,group:"home",type:"Netflix • subscription",genre:"Crime / thriller",date:"Oct. 30",desc:"After a robbery, the police officers responsible find themselves working on the investigation into their own crime."},
-  {title:"Minions & Monsters",year:2026,group:"home",type:"Peacock • subscription",genre:"Animated comedy / family",date:"Oct. 28",desc:"The Minions try to make it big in 1920s Hollywood, but their monster-movie ambitions cause some very real chaos."},
-  {title:"Ali G: Who Iz I?",year:2026,group:"home",type:"Prime Video • subscription",genre:"Comedy",date:"Oct. 28",desc:"Facing fatherhood, Ali G travels to America in a bid to reclaim his fame, stumbling into fresh trouble along the way."},
-  {title:"Drive: The Pretenders",year:2026,group:"home",type:"Prime Video • subscription",genre:"Romance / sports drama",date:"Oct. 28",desc:"A gifted aspiring racing mechanic agrees to play the fiancée of a star driver in exchange for a career opportunity."},
-  {title:"Hanging by a Wire",year:2026,group:"home",type:"Paramount+ • subscription",genre:"Documentary / survival",date:"Oct. 28",desc:"A documentary reconstructs the rescue of schoolchildren stranded high above a mountain gorge after cable car lines snapped."},
-  {title:"The Dog Stars",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Post-apocalyptic thriller",date:"Oct. 27",desc:"A pilot living with his dog in the aftermath of a deadly pandemic follows an unexpected radio transmission into the unknown."},
-  {title:"Verity",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Psychological thriller",date:"Oct. 27",desc:"A ghostwriter accepts a job for a bestselling author and uncovers troubling secrets hidden inside the family's home."},
-  {title:"Forgotten Island",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Animated adventure / fantasy",date:"Oct. 27",desc:"Two friends enter a magical world where the price of escape may be the memories of their friendship."},
-  {title:"The Stunt Driver",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Biographical comedy / drama",date:"Oct. 27",desc:"A Canadian daredevil attempts to jump a rocket-powered car across the St. Lawrence River in the 1970s."},
-  {title:"Ghost in the Cell",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Supernatural horror",date:"Oct. 27",desc:"Rival prisoners discover that an invisible supernatural threat is hunting the inmates inside their high-security prison."},
-  {title:"Never After Dark",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Supernatural horror / mystery",date:"Oct. 27",desc:"A medium who helps wandering spirits encounters a fearsome apparition and an unexpectedly human threat."},
-  {title:"Filipiñana",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Dark comedy / drama",date:"Oct. 27",desc:"A teenage worker at an exclusive country club in the Philippines uncovers disturbing truths behind its polished exterior."},
-  {title:"Concessions",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Independent comedy / drama",date:"Oct. 27",desc:"Workers and customers at a neighborhood movie theater experience the final evening before its doors close."},
-  {title:"The Lost Ones",year:2026,group:"digital",type:"Digital • rent / buy",genre:"Thriller / horror",date:"Oct. 27",desc:"A family's retreat into the countryside takes a troubling turn after they meet an unsettling neighbor."}
+  {
+    "title": "Carolina Caroline",
+    "year": 2026,
+    "group": "home",
+    "type": "Netflix • subscription",
+    "genre": "Crime / romance / thriller",
+    "date": "Nov. 6",
+    "desc": "A crime-tinged romantic thriller starring Samara Weaving and Kyle Gallner."
+  },
+  {
+    "title": "Possible Love",
+    "year": 2026,
+    "group": "home",
+    "type": "Netflix • subscription",
+    "genre": "Drama",
+    "date": "Nov. 6",
+    "desc": "Two married couples confront hidden desires after their lives intersect."
+  },
+  {
+    "title": "The Uprising",
+    "year": 2026,
+    "group": "home",
+    "type": "Peacock • subscription",
+    "genre": "Action / drama",
+    "date": "Nov. 6",
+    "desc": "A new action drama premiering on Peacock this Friday."
+  },
+  {
+    "title": "Motor City",
+    "year": 2026,
+    "group": "home",
+    "type": "AMC+ • subscription",
+    "genre": "Action / thriller",
+    "date": "Nov. 6",
+    "desc": "A new action thriller arriving on AMC+."
+  },
+  {
+    "title": "Making Marie Antoinette",
+    "year": 2026,
+    "group": "home",
+    "type": "MUBI • subscription",
+    "genre": "Documentary",
+    "date": "Nov. 6",
+    "desc": "A documentary exploring the making of Sofia Coppola's film Marie Antoinette."
+  },
+  {
+    "title": "Unprotected: Murder in Galicia",
+    "year": 2026,
+    "group": "home",
+    "type": "Netflix • subscription",
+    "genre": "True crime / documentary",
+    "date": "Nov. 6",
+    "desc": "A documentary examining the disturbing circumstances surrounding an attack on Isabel Fuentes in Spain."
+  },
+  {
+    "title": "Super Troopers 3",
+    "year": 2026,
+    "group": "home",
+    "type": "Hulu • subscription",
+    "genre": "Comedy",
+    "date": "Nov. 5",
+    "desc": "The comedy franchise returns with another installment featuring its highway patrol misfits."
+  },
+  {
+    "title": "Resident Evil",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Horror / science fiction",
+    "date": "Nov. 3",
+    "desc": "A medical courier faces infected and mutated threats in Raccoon City in a new take on the horror franchise."
+  },
+  {
+    "title": "Primetime",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Crime / drama / thriller",
+    "date": "Nov. 3",
+    "desc": "A drama about the ethically fraught production of television's To Catch a Predator."
+  },
+  {
+    "title": "Your Mother Your Mother Your Mother",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Crime / drama",
+    "date": "Nov. 3",
+    "desc": "A new crime drama starring Mahershala Ali, John Cho and Giancarlo Esposito."
+  },
+  {
+    "title": "The Shadow's Edge",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Action / crime / thriller",
+    "date": "Nov. 3",
+    "desc": "Jackie Chan stars in a high-stakes crime thriller."
+  },
+  {
+    "title": "Bad Apples",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Thriller",
+    "date": "Nov. 3",
+    "desc": "A new thriller available to rent or buy digitally."
+  },
+  {
+    "title": "Beware Boiúna",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Action / horror / thriller",
+    "date": "Nov. 3",
+    "desc": "An action-horror thriller featuring Logan Marshall-Green and Jessica Rothe."
+  },
+  {
+    "title": "The History of Concrete",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Documentary / comedy",
+    "date": "Nov. 3",
+    "desc": "John Wilson explores an unexpectedly revealing subject in his offbeat documentary."
+  },
+  {
+    "title": "Musk",
+    "year": 2026,
+    "group": "digital",
+    "type": "Digital • rent / buy",
+    "genre": "Documentary",
+    "date": "Nov. 6",
+    "desc": "Alex Gibney's documentary about Elon Musk."
+  },
+  {
+    "title": "The 12 Dates of Christmas",
+    "year": 2026,
+    "group": "home",
+    "type": "Hulu • subscription",
+    "genre": "Romantic comedy",
+    "date": "Nov. 6",
+    "desc": "A holiday-themed romantic comedy starring Lucy Hale and Ian Harding."
+  }
 ];
 
 let currentFilter = "all";
